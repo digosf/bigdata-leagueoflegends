@@ -11,8 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/champions', 'ChampionController@index')->name('champions');
+Route::get('/', 'ChampionController@index')->name('champions');
