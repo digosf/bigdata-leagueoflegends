@@ -20,6 +20,8 @@
 
     <link rel="stylesheet" href="{{ asset('js/vendor/sweetalert/sweetalert.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('js/vendor/ladda/ladda.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -57,6 +59,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/b-1.3.1/r-2.1.1/datatables.min.js"></script>
 <script src="{{ asset('js/site.js') }}"></script>
 <script src="{{ asset('js/vendor/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/vendor/ladda/spin.min.js') }}"></script>
+<script src="{{ asset('js/vendor/ladda/ladda.min.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

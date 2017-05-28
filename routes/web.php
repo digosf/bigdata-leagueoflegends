@@ -13,3 +13,4 @@
 
 
 Route::get('/', 'ChampionController@index')->name('champions');
+Route::post('/composicao/salvar', 'ChampionController@store')->name('champions.store');

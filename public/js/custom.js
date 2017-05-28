@@ -7,7 +7,7 @@ function showChampions(champions) {
     var championRow = $('<div class="row"></div>');
 
     Object.keys(champions).forEach(function(key) {
-        var championCol = $('<div class="col-lg-2 col-sm-6 col-xs-12 champion-col"></div>');
+        var championCol = $('<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 champion-col"></div>');
         var championBox = $('<div class="champion-box" data-id="' + champions[key].id + '"></div>');
 
         var title = $('<div class="title">' + champions[key].name + '</div>');
@@ -40,6 +40,8 @@ function validateChampionLimit() {
 }
 
 $(document).ready(function () {
+    var compSubmit = Ladda.create( document.querySelector( '.comp-submit' ) );
+
     $.get(apiLink)
         .done(function (response) {
             showChampions(response.data);
@@ -65,6 +67,29 @@ $(document).ready(function () {
     });
 
     $('.comp-submit').on('click', function() {
-       console.log('Enviando dados...');
+        compSubmit.start();
+
+        $.ajax({
+            method: 'POST',
+            url: "/composicao/salvar",
+            data: { champions: selectedChampions },
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': window.Laravel.csrfToken
+            }
+        }).done(function(response) {
+            if (response.data.success) {
+                swal({
+                    title: "Acabamos de analisar sua composição!",
+                    text: "Espere apenas alguns segundos que já será redirecionado para a página com mais informações!",
+                    type: "success",
+                    confirmButtonText: "Ok"
+                });
+            }
+            compSubmit.stop();
+        }).fail(function(error) {
+            console.log(error);
+            compSubmit.stop();
+        });
     });
 });
