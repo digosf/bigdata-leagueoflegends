@@ -18,6 +18,10 @@
 
     <link rel="stylesheet" href="{{ asset('css/site.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('js/vendor/sweetalert/sweetalert.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,15 +51,12 @@
     </div>
 </nav>
 
-<div class="container">
-
-    @yield('content')
-
-</div><!-- /.container -->
-
+@yield('content')
 
 <script src="{{ asset('js/core.js') }}"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/b-1.3.1/r-2.1.1/datatables.min.js"></script>
 <script src="{{ asset('js/site.js') }}"></script>
+<script src="{{ asset('js/vendor/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

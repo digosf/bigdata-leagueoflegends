@@ -1,0 +1,32 @@
+.champion-container {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 550px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0 15px;
+}
+
+.champion-box {
+    height: 180px;
+    text-align: center;
+}
+
+.champion-box:hover img, .champion-box.selected img {
+    border: 10px solid #f44e42;
+}
+
+.champion-box .title {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.champion-box img {
+    margin: 0 auto;
+    border: 10px solid transparent;
+    transition: all .3s ease-in-out;
+}
+
+.comp-submit {
+    margin-top: 15px;
+}

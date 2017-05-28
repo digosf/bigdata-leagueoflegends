@@ -2,16 +2,11 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Campeões League of Legends</div>
-                      @foreach ($champions as $champion)
-                      <h4>{{$champion->name}}</h4>
-                        <img src="{{$champion->link}}" alt="{{$champion->name}}" width="32px" height="32px">
-                      @endforeach
-                </div>
-            </div>
+        <h2>Monte sua composição</h2>
+        <div class="loading">
+            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
         </div>
+        <a href="#" class="btn btn-success comp-submit">Enviar composição</a>
     </div>
 @endsection
