@@ -18,8 +18,7 @@ class ChampionController extends Controller
 
         Storage::disk('local')->put($fileName, json_encode($champions));
 
-        //exec('cd /var/www/html/projeto-bigdata/project');
-        shell_exec('spark-submit lolapp_2.11-1.0.jar /var/www/html/projeto-bigdata/storage/app/' . $fileName);
+        shell_exec('/var/www/html/projeto-bigdata/project/spark-submit lolapp_2.11-1.0.jar /var/www/html/projeto-bigdata/storage/app/' . $fileName);
 
         //Storage::disk('local')->delete($fileName);
 
