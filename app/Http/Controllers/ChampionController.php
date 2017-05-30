@@ -18,10 +18,15 @@ class ChampionController extends Controller
 
         Storage::disk('local')->put($fileName, json_encode($champions));
 
-        exec('sleep 30');
+        exec('cd /var/www/html/projeto-bigdata/project');
+        exec('spark-submit lolapp_2.11-1.0.jar /var/www/html/projeto-bigdata/storage/app/' . $filename);
 
-        Storage::disk('local')->delete($fileName);
+        //Storage::disk('local')->delete($fileName);
 
         return json_encode(['data' => ['success' => true]]);
-    }
+      }
+      public function results () {
+        $content = Storage::disk('local')->get('results.txt');
+        return view ('results', ['content' => $content]);
+      }
 }

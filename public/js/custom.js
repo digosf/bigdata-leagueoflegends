@@ -84,7 +84,9 @@ $(document).ready(function () {
                     text: "Espere apenas alguns segundos que já será redirecionado para a página com mais informações!",
                     type: "success",
                     confirmButtonText: "Ok"
-                });
+                }, function() {
+            window.location = "/resultado";
+          });
             }
             compSubmit.stop();
         }).fail(function(error) {

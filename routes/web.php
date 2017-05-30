@@ -13,4 +13,6 @@
 
 
 Route::get('/', 'ChampionController@index')->name('champions');
+
+Route::get('/resultado', 'ChampionController@results')->name('results');
 Route::post('/composicao/salvar', 'ChampionController@store')->name('champions.store');
