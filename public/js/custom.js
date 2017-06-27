@@ -78,15 +78,17 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': window.Laravel.csrfToken
             }
         }).done(function(response) {
-            if (response.data.success) {
+            if (response.data.filename) {
                 swal({
                     title: "Acabamos de analisar sua composição!",
                     text: "Espere apenas alguns segundos que já será redirecionado para a página com mais informações!",
                     type: "success",
                     confirmButtonText: "Ok"
                 }, function() {
-            window.location = "/resultado";
-          });
+                    var filename = response.data.filename;
+                    filename = filename.replace('.json', '');
+                    window.location = "/resultado/" + filename;
+                });
             }
             compSubmit.stop();
         }).fail(function(error) {

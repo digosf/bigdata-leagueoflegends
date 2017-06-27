@@ -14,17 +14,19 @@ class ChampionController extends Controller
     public function store(Request $request) {
         $champions = $request->get('champions');
         $fileName = 'champions_' . uniqidReal() . '.json';
-        $absolutePath = storage_path($fileName);
+        //$absolutePath = storage_path($fileName);
 
-        Storage::disk('local')->put($fileName, json_encode($champions));
+        //Storage::disk('local')->put($fileName, json_encode($champions));
 
-        $output = shell_exec('/opt/spark-2.1.1-bin-hadoop2.7/bin/spark-submit /var/www/html/projeto-bigdata/project/lolapp_2.11-1.0.jar /var/www/html/projeto-bigdata/storage/app/' . $fileName . ' 2>&1');
-        Storage::disk('local')->put('output.txt', $output);
+        //$output = shell_exec('/opt/spark-2.1.1-bin-hadoop2.7/bin/spark-submit /var/www/html/projeto-bigdata/project/lolapp_2.11-1.0.jar /var/www/html/projeto-bigdata/storage/app/' . $fileName . ' 2>&1');
+        //Storage::disk('local')->put('output.txt', $output);
 		//Storage::disk('local')->delete($fileName);
 
-        return json_encode(['data' => ['success' => true]]);
+        return json_encode(['data' => ['filename' => $fileName]]);
       }
-      public function results () {
+
+      public function results ($id) {
+        dd($id);
         $content = Storage::disk('local')->get('results.txt');
         return view ('results', ['content' => $content]);
       }
