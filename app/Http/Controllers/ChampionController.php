@@ -25,9 +25,9 @@ class ChampionController extends Controller
         return json_encode(['data' => ['filename' => $fileName]]);
       }
 
-      public function results ($id) {
-        dd($id);
-        $content = Storage::disk('local')->get('results.txt');
-        return view ('results', ['content' => $content]);
-      }
+    public function results ($id) {
+        //$content = Storage::disk('local')->get('results.txt');
+        //return view ('results', ['content' => $content]);
+        return view('results');
+    }
 }
