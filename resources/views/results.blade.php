@@ -3,15 +3,15 @@
 @section('content')
     <div class="container">
         <!-- COMP  -->
-        @foreach ($champions as $champion)
+        @for ($i = 0; $i < count($champions); $i++)
           <div class="row result-comp-row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 result-champ-col">
                 <div class="result-main-box">
-                    <div class="title">Para Enfrentar Campeão {{$champion['name']}}</div>
-                    <img src={{$champion['image']}} class="img-responsive-champion img-circle-champion" alt="">
+                    <div class="title">Para Enfrentar Campeão {{$champions[$i]['name']}}</div>
+                    <img src={{$champions[$i]['image']}} class="img-responsive-champion img-circle-champion" alt="">
                 </div>
             </div>
-            @foreach ($content['adversary'] as $adversary)
+            @foreach ($content[$i+1]['adversaries'] as $adversary)
               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-10 result-champ-col">
                   <div class="result-champ-box">
                       <div class="title">Sugestão: {{$adversary['name']}}</div>
@@ -23,6 +23,6 @@
               </div>
             @endforeach
           </div>
-        @endforeach
+        @endfor
     </div>
 @endsection

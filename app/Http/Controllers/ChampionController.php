@@ -37,18 +37,18 @@ class ChampionController extends Controller
           $champions[$i]['name'] =  $champion_data['data'][$json_data[0][$i]]['name'];
           $champions[$i]['image'] = $imageLink . $champion_data['data'][$json_data[0][$i]]['image']['full'];
         }
-        //dd($champions);
 
         for ($i = 1; $i < count($json_data); $i ++){
           for ($j = 0; $j < count($json_data[$i]); $j ++) {
-            $content['adversary'][$j]['name'] = $champion_data['data'][$json_data[$i][$j][0]]['name'];
-            $content['adversary'][$j]['image'] = $imageLink . $champion_data['data'][$json_data[$i][$j][0]]['image']['full'];
-            $content['adversary'][$j]['value'] = number_format($json_data[$i][$j][1], 2, '.', ',');
-            $content['adversary'][$j]['victories'] = $json_data[$i][$j][2];
-            $content['adversary'][$j]['matches'] = $json_data[$i][$j][3];
+              $content[$i]['adversaries'][$j]['name'] = $champion_data['data'][$json_data[$i][$j][0]]['name'];
+              $content[$i]['adversaries'][$j]['image'] = $imageLink . $champion_data['data'][$json_data[$i][$j][0]]['image']['full'];
+              $content[$i]['adversaries'][$j]['value'] = number_format($json_data[$i][$j][1], 2, '.', ',');
+              $content[$i]['adversaries'][$j]['victories'] = $json_data[$i][$j][2];
+              $content[$i]['adversaries'][$j]['matches'] = $json_data[$i][$j][3];
           }
         }
-        //dd($content);
+
+      //  dd($content);
 
         return view ('results', ['champions' => $champions,
                                  'content' => $content]);
