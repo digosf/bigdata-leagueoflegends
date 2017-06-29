@@ -19,7 +19,7 @@ class ChampionController extends Controller
         Storage::disk('local')->put($fileName, json_encode($champions));
 
         $output = shell_exec('/opt/spark-2.1.1-bin-hadoop2.7/bin/spark-submit /var/www/html/projeto-bigdata/project/loldatafinder_2.11-1.0.jar /var/www/html/projeto-bigdata/storage/app/' . $fileName . ' 2>&1');
-        Storage::disk('local')->put($filename, $output);
+        Storage::disk('local')->put($fileName, $output);
 
         return json_encode(['data' => ['filename' => $fileName]]);
       }
