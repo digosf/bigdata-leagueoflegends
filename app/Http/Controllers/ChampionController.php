@@ -33,19 +33,31 @@ class ChampionController extends Controller
         $absolutePath = storage_path($fileName);
         $json_data = json_decode(file_get_contents($absolutePath), true);
 
+        //dd($json_data);
         for( $i= 0; $i< count ($json_data[0]); $i ++) {
           $champions[$i]['name'] =  $champion_data['data'][$json_data[0][$i]]['name'];
           $champions[$i]['image'] = $imageLink . $champion_data['data'][$json_data[0][$i]]['image']['full'];
         }
 
+        //dd($json_data);
         for ($i = 1; $i < count($json_data); $i ++){
           for ($j = 0; $j < count($json_data[$i]); $j ++) {
+            if($json_data[$i][$j][0] == 0) {
+              $content[$i]['adversaries'][0]['name'] = 'sem ocorrência';
+              $content[$i]['adversaries'][0]['image'] = '#';
+              $content[$i]['adversaries'][0]['value'] = 0.0;
+              $content[$i]['adversaries'][0]['victories'] = 0;
+              $content[$i]['adversaries'][0]['matches'] = 0;
+            }
+            else {
               $content[$i]['adversaries'][$j]['name'] = $champion_data['data'][$json_data[$i][$j][0]]['name'];
               $content[$i]['adversaries'][$j]['image'] = $imageLink . $champion_data['data'][$json_data[$i][$j][0]]['image']['full'];
               $content[$i]['adversaries'][$j]['value'] = number_format($json_data[$i][$j][1], 2, '.', ',');
               $content[$i]['adversaries'][$j]['victories'] = $json_data[$i][$j][2];
               $content[$i]['adversaries'][$j]['matches'] = $json_data[$i][$j][3];
+            }
           }
+
         }
 
       //  dd($content);
