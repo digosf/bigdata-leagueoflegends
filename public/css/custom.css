@@ -7,7 +7,12 @@
     padding: 0 15px;
 }
 
-.champion-box, .result-champ-box {
+.champion-box, .result-champ-box, .result-main-box {
+    height: 280px;
+    text-align: center;
+}
+
+.result-main-box {
     height: 180px;
     text-align: center;
 }
@@ -16,12 +21,12 @@
     border: 10px solid #f44e42;
 }
 
-.champion-box .title, .result-champ-box .title {
+.champion-box .title, .result-champ-box .title, .result-main-box .title {
     padding: 10px;
     font-size: 16px;
 }
 
-.champion-box img, .result-champ-box img {
+.champion-box img, .result-champ-box img, .result-main-box img{
     margin: 0 auto;
     border: 10px solid transparent;
     transition: all .3s ease-in-out;
@@ -37,7 +42,7 @@
 
 .result-comp-row + .result-comp-row {
     padding-top: 15px;
-    border-top: 1px solid #ddd;
+    border-top: 3px solid #ddd;
 }
 
 .win-rate-box {
@@ -48,11 +53,11 @@
 }
 
 .win-rate-box p {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .win-rate-box .rate-label {
-    font-size: 32px;
+    font-size: 26px;
 }
 
 .win-rate-box .rate-label.bg-green {

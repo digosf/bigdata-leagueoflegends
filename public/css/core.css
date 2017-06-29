@@ -1109,6 +1109,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+.img-responsive-champion {
+  display: block;
+  max-width: 120%;
+  height: auto;
+}
 .img-rounded {
   border-radius: 6px;
 }
@@ -1124,6 +1129,9 @@ img {
   height: auto;
 }
 .img-circle {
+  border-radius: 50%;
+}
+.img-circle-champion {
   border-radius: 50%;
 }
 hr {

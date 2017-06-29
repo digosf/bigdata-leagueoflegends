@@ -33,14 +33,24 @@ class ChampionController extends Controller
         $absolutePath = storage_path($fileName);
         $json_data = json_decode(file_get_contents($absolutePath), true);
 
-        for ($i =0; $i< count($json_data); $i ++){
-          for ($j = 0; $j <5; $j ++) {
-            $content[$i]['champions'][$j]['champion_name'] = $champion_data['data'][$json_data[$i][$j]]['name'];
-            $content[$i]['champions'][$j]['champion_image'] = $imageLink . $champion_data['data'][$json_data[$i][$j]]['image']['full'];
-          }
-            $content[$i]['victory_value'] = $json_data[$i][$j];
+        for( $i= 0; $i< count ($json_data[0]); $i ++) {
+          $champions[$i]['name'] =  $champion_data['data'][$json_data[0][$i]]['name'];
+          $champions[$i]['image'] = $imageLink . $champion_data['data'][$json_data[0][$i]]['image']['full'];
         }
-        //dd($content[1]['champions']);
-        return view ('results', ['content' => $content]);
+        //dd($champions);
+
+        for ($i = 1; $i < count($json_data); $i ++){
+          for ($j = 0; $j < count($json_data[$i]); $j ++) {
+            $content['adversary'][$j]['name'] = $champion_data['data'][$json_data[$i][$j][0]]['name'];
+            $content['adversary'][$j]['image'] = $imageLink . $champion_data['data'][$json_data[$i][$j][0]]['image']['full'];
+            $content['adversary'][$j]['value'] = number_format($json_data[$i][$j][1], 2, '.', ',');
+            $content['adversary'][$j]['victories'] = $json_data[$i][$j][2];
+            $content['adversary'][$j]['matches'] = $json_data[$i][$j][3];
+          }
+        }
+        //dd($content);
+
+        return view ('results', ['champions' => $champions,
+                                 'content' => $content]);
     }
 }
